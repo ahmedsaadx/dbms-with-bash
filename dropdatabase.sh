@@ -8,11 +8,12 @@ drop_function(){
    echo "database droped"
    else
       echo "Database don't exist " 
+      
    fi
 }
 
 drop_function
-read -p 'went back to main menu [Yy , Nn for exit] :' choice_d
+read -p 'went back to main menu [Y/y , N/n for exit] :' choice_d
 case $choice_d in 
    ['Y-y']) menu 
    ;;

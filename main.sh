@@ -20,8 +20,7 @@ enter your option
 :" 
 read replay
 case $replay in 
-    1) . ./createdatabase.sh
-    ;;
+    1) . ./createdatabase.sh ;sleep 1 ;;
     2) . ./listdatabases.sh
     ;;
     3) echo 3

@@ -5,6 +5,7 @@ list(){
   for i in $dir 
   do 
   lists=(${lists[@]} $i)
+  echo $i
   done 
 }  
 
@@ -15,24 +16,19 @@ list(){
     select answer in 'yes' 'no'
     do 
      case $answer in 
-       "yes") . ./createdatabase.sh ;exit
-       ;;
-       "no") exit ;;
+       "yes") . ./createdatabase.sh ;menu;;
+       "no") echo "back to menu ";sleep 1 ; menu;;
        
-       *) echo "please answer with Y/N " 
+       *) echo "please answer with 1,2 " 
        ;;
     esac    
-    done
-      
-  else 
-     echo $i
-     
+    done  
    fi  
  }
  list
  check
 
-read -p 'went back to main menu [Yy , Nn for exit] :' choice
+read -p 'went back to main menu [Y/y , N/n for exit] :' choice
 case $choice in 
    ['Y-y']) menu 
    ;;
