@@ -22,7 +22,7 @@ read replay
 case $replay in 
     1) . ./createdatabase.sh
     ;;
-    2) echo 2
+    2) . ./listdatabases.sh
     ;;
     3) echo 3
     ;;
