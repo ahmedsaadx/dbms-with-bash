@@ -26,7 +26,7 @@ case $replay in
     ;;
     3) echo 3
     ;;
-    4) echo 4
+    4) . ./dropdatabase.sh
     ;;
     0) exit 
     ;;
