@@ -23,10 +23,12 @@ list(){
        ;;
     esac    
     done  
+    else 
+       list
    fi  
  }
- list
- check
+ 
+ list 
 
 read -p 'went back to main menu [Y/y , N/n for exit] :' choice
 case $choice in 
@@ -34,6 +36,6 @@ case $choice in
    ;;
    ['N-n']) exit 
    ;;
-   *) echo  -e '\nplease enter yes or no only \n\nyour databases list again: \n' ;check;;
+   *) echo  -e '\nplease enter yes or no only \n\nyour databases list again: \n' ;list;;
 esac
  

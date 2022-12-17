@@ -1,9 +1,9 @@
 #!/usr/bin/bash
 
 create_database(){
-   read -p  "enter your database name :" dbname
+   read -r -p  "enter your database name :"  dbname
    regex='A-Za-z'
-   if [ -d $dbname ];
+   if [[ -d $dbname ]] > /dev/null ;
    then
     echo "Can't create database $dbname , database exists "
     echo "you can connect with it or drop it "

@@ -1,13 +1,13 @@
 #!/usr/bin/bash
-drop_function(){
-   echo "enter your database name :"
-   read dropd
+drop_function(){  
+   read -p  "enter your database name :" -r dropd
    rm -r $dropd 2> /dev/null
    if [ $? = 0 ];
    then 
    echo "database droped"
    else
-      echo "Database don't exist " 
+   echo "Database don't exist "
+    
       
    fi
 }
@@ -20,5 +20,5 @@ case $choice_d in
    ['N-n']) exit 
    ;;
    *) echo  -e '\nplease enter yes or no only'
-   ;;
+    ;;
  esac  
