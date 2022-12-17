@@ -1,14 +1,16 @@
 #!/usr/bin/bash
+ 
 
 connect_db(){
      read -p "enter your database name :" -r connect_dbname
     if [ -d $connect_dbname ]; 
     then
     cd $connect_dbname
+    PS3=$(echo  -e "current database : $(pwd|cut -d '/' -f 5)\nPlease enter your choice": )
     select option in 'Create table' 'List tables' "Insert into table" "Delete table" "select from table" "update tables" "back to menu" "exit"
     do
     case $option in 
-        "Create table") echo 1 
+        "Create table") . ../createtable.sh
         ;;
         "List tables") echo 2
         ;;
