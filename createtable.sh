@@ -1,4 +1,14 @@
 #!/usr/bin/bash
+item(){
+  echo "enter your "
+
+
+
+}
+
+
+
+
 read -p "enter your table :" -r table_name
 regex_1="A-Za-z"
 if [[ $table_name =~ [^$regex_1] ]];
