@@ -1,3 +1,4 @@
+#!/usr/bin/bash
 update_(){
     echo "enter your column name :"
     read -r column_

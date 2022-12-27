@@ -1,5 +1,4 @@
-
-
+#!/usr/bin/bash
 regex='A-Za-z'
 regex_num='1-9'
 add_record(){
@@ -48,7 +47,7 @@ add_record(){
     record=(${record[@]} $record_ ':')
     i=$(( $i + 1 ))
     done
-    echo -e "${record[@]}" >> $tname
+    echo ${record[@]} >> $tname
    
 }
 echo "enter table name : "
