@@ -2,7 +2,7 @@
 select_column(){
     echo 'enter your column number :'
     read -r number_
-    if  [[  $num_start =~ ^['0-9']+$ ]] ;
+    if  [[  ! $number_ =~ ^[0-9]+$ ]] ;
     then
     echo "error"
     else
@@ -17,10 +17,10 @@ select_column2(){
     read -r num_start
     echo 'enter your end number :'
     read -r num_end
-    if  [[ ! $num_start =~ ^['0-9']+$ ]] ;
+    if  [[ ! $num_start =~ ^[0-9]+$ ]] ;
     then
     echo "error"
-    elif  [[ ! $num_end =~ ^['0-9']+$ ]] ;
+    elif  [[ ! $num_end =~ ^[0-9]+$ ]] ;
     then
     echo "error"
     else
