@@ -16,7 +16,7 @@ add_record(){
     read -r record_
     if [[ $checkcoltype == 'int' ]] ;
     then
-     while [[ $record_ =~ [^$regex_num] ]];
+     while [[ ! $record_ =~ ^[$regex_num]+$ ]];
      do
         echo " error [you must enter numbers only] "
         echo "enter your record again"
@@ -25,7 +25,7 @@ add_record(){
     done
     elif [[ $checkcoltype == 'str' ]];
     then
-       while  [[ $record_ =~ [^$regex] ]];
+       while  [[ ! $record_ =~ ^[$regex]+$ ]];
        do
         echo " error [you must enter english char only] "
         echo "enter your record again"
