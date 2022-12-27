@@ -1,8 +1,13 @@
 #!/usr/bin/bash
-
 create_database(){
    read -r -p  "enter your database name :"  dbname
    regex='A-Za-z'
+   if [[ -f $dbname ]] > /dev/null ;
+   then
+    echo "Can't create database $dbname because file have same name  "
+    sleep 1
+    menu
+   fi
    if [[ -d $dbname ]] > /dev/null ;
    then
     echo "Can't create database $dbname , database exists "
@@ -11,10 +16,9 @@ create_database(){
     sleep 1
     menu
    else
-      if  [[  ! $dbname =~ [^$regex] ]];
-      #output of =~ is 0 when regex is matched , 1 otherwise
+      if  [[ $dbname =~ ^[$regex]+$ ]];
       then
-      mkdir $dbname
+      mkdir $dbname 2> /dev/null
       echo "done"
       else 
       echo -e 'your database name must have letters only \nlike mydb , Database '

@@ -1,30 +1,30 @@
 #!/usr/bin/bash
- 
-
 connect_db(){
      read -p "enter your database name :" -r connect_dbname
     if [ -d $connect_dbname ]; 
     then
     cd $connect_dbname
     PS3=$(echo  -e "current database : $(pwd|cut -d '/' -f 5)\nPlease enter your choice": )
-    select option in 'Create table' 'List tables' "Insert into table" "Delete table" "select from table" "update tables" "back to menu" "exit"
+    select option in 'Create table' 'List tables' "Insert into table" "Delete table" "select from table" "delete from table" "update tables" "back to menu" "exit"
     do
     case $option in 
         "Create table") . ../createtable.sh
         ;;
-        "List tables") echo 2
+        "List tables") . ../tableslist.sh
         ;;
-        "Insert into table") echo 3
+        "Insert into table") . ../insert.sh
         ;;
-        "Delete table") echo 4
+        "Delete table") . ../deletetable.sh
         ;;
-        "select from table") echo 5
+        "select from table") . ../select.sh
         ;;
-        "update tables") echo 6
+        "update tables") . ../update.sh
+        ;;
+        "delete from table") . ../dropfromtable.sh 
         ;;
         "back to menu") cd .. ; menu
         ;;
-        "exit") exit 
+        "exit") exit
         ;;
         *) echo "error"
         ;;

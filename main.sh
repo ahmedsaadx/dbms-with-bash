@@ -3,7 +3,7 @@ echo -n "
 ######################################################
 #                                                    #
 #      Databasse Management system                   #
-#         created BY ahmed                           #
+#       created BY ahmed && kareem                  #
 #                                                    #
 ###################################################### 
 "
@@ -20,7 +20,7 @@ enter your option
 :" 
 read replay
 case $replay in 
-    1) . ./createdatabase.sh ;sleep 1 ;;
+    1) . ./createdatabase.sh  ;;
     2) . ./listdatabases.sh
     ;;
     3) . ./connectdb.sh

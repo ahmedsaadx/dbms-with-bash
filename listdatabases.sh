@@ -1,16 +1,16 @@
 #!/usr/bin/bash 
 declare -a lists
 list(){
-  dir=`ls -l | grep '^d' |cut -d' ' -f9`
+  dir=`ls -F | grep '/' |cut -d'/' -f1`
   for i in $dir 
   do 
   lists=(${lists[@]} $i)
-  echo $i
+  
   done 
 }  
 
  check (){
-    if (( "${#lists[@]}" == 0 )) ;
+    if [ ${#lists[@]} == 0 ] ;
   then
     echo -e '\nno there databases yet\nyou can create new database \nDo you want to create? :'
     select answer in 'yes' 'no'
@@ -21,21 +21,22 @@ list(){
        
        *) echo "please answer with 1,2 " 
        ;;
-    esac    
-    done  
-    else 
-       list
+    esac 
+    done
+    else  
+    echo ${lists[@]}   
    fi  
  }
+ list
+ check
  
- list 
 
 read -p 'went back to main menu [Y/y , N/n for exit] :' choice
 case $choice in 
    ['Y-y']) menu 
    ;;
-   ['N-n']) exit 
+   ['N-n'])echo ${lists[@]}; exit 
    ;;
-   *) echo  -e '\nplease enter yes or no only \n\nyour databases list again: \n' ;list;;
+   *) echo  -e '\nplease enter yes or no only \n\nyour databases list again: \n' ;echo ${lists[@]};;
 esac
  
