@@ -48,7 +48,7 @@ add_record(){
     record=(${record[@]} $record_ ':')
     i=$(( $i + 1 ))
     done
-    echo -e "${record[@]} \n" >> $tname
+    echo -e "${record[@]}" >> $tname
    
 }
 echo "enter table name : "
