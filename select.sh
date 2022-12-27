@@ -38,7 +38,7 @@ select_column2(){
 
 echo "enter your table name "
 read -r tname
-if  ! [ -e $tname -a -e $tname.rows ] ;
+if  ! [ -e $tname -a -e $tname.rows 2> /dev/null  ] ;
 then 
 echo 'table dont exist '
 else

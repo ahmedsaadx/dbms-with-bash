@@ -6,10 +6,10 @@ update_(){
     while(( $i <= $col_num ))
     do
     vaild_column_name=`awk -F : '{if ( NR == '$i') print $1 }' $tname.rows`
-    if [ $column_ == $vaild_column_name ];
+    if [ $column_ == $vaild_column_name 2> /dev/null ];
     then
-        column_type=`grep $vaild_column_name $tname.rows | cut -d : -f 3 ` 
-        column_pk=`grep $vaild_column_name $tname.rows | cut -d : -f 2`
+        column_type=`awk 'BEGIN {FS=":"}{if ( NR=='$i' ) print $3 }' $tname.rows`
+        column_pk=`awk 'BEGIN {FS=":"}{if ( NR=='$i' ) print $2 }' $tname.rows`
         echo "enter your new value :"
         read -r value_
         if [ -z $value_ ];
@@ -32,32 +32,32 @@ update_(){
         echo "enter your old value"
         read -r oldvalue
         
-        if [ $column_type = 'int' ];
+        if [ $column_type = 'int' 2> /dev/null ];
         then
-            if [[  $value_ =~ [^0-9] ]];
+            if [[ ! $value_ =~ ^[0-9]+$ ]];
             then
                 echo " error enter numbers only"
             else    
             ahmed=`awk -v var=$i -F : 'BEGIN{ORS=" "} {print $var}' $tname`
                 for ii in $ahmed
                 do
-                    if [ $oldvalue == $ii ];
+                    if [ $oldvalue == $ii  ] 
                     then
                         sed -i 's/'$oldvalue/$value_'/'  $tname
                         break
                      fi   
                 done
             fi
-        elif [ $column_type = 'str' ];
+        elif [ $column_type = 'str' 2> /dev/null ];
         then
-            if [[  $value_ =~ [^A-Za-z] ]];
+            if [[ ! $value_ =~ ^[A-Za-z]+$ ]];
             then
                 echo " error enter char only"
             else   
             ahmed=`awk -v var=$i -F : 'BEGIN{ORS=" "} {print $var}' $tname`
                 for ii in $ahmed
                 do
-                    if [ $oldvalue = $ii ];
+                    if [ $oldvalue = $ii 2> /dev/null ];
                     then
                         sed -i 's/'$oldvalue/$value_'/'  $tname
                         break
