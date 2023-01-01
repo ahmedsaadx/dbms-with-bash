@@ -9,7 +9,6 @@ echo -n "
 "
 sleep 1
 echo "welcome to Database engine with bash"
-menu(){
 echo -n "
 enter your option
 1) Create Database
@@ -18,7 +17,7 @@ enter your option
 4) Drop Database
 0) Exit 
 :" 
-read replay
+read  replay
 case $replay in 
     1) . ./createdatabase.sh  ;;
     2) . ./listdatabases.sh
@@ -29,7 +28,7 @@ case $replay in
     ;;
     0) exit 
     ;;
-    *) echo 'error'; sleep 1 ;menu;
+    *) echo 'error'; sleep 1 ;
 esac   
-}
-menu
+
+
